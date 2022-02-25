@@ -1,11 +1,11 @@
 
 type Query{
-    users: [User!]!
-    user(id:ID!):User!
+   todosUsuarios: [User!]!
+    umUsuario(id:ID!):User!
 }    
 
 type User{
-    _id: ID!
+    id: ID!
     name:String!
     email:String!
 }
@@ -17,6 +17,6 @@ type Role{
 
 type Mutation{
     createUser(name:String!, email:String!):User!
-    updateUser(name:String!, email:String!):User!
+    updateUser(id:ID!,name:String!, email:String!):Boolean!
     deleteUser(id:ID!): Boolean
 }   
