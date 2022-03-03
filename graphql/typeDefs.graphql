@@ -2,21 +2,32 @@
 type Query{
    todosUsuarios: [User!]!
     umUsuario(id:ID!):User!
+    todasFuncoes: [Role!]!
+    umaFuncao(id:ID!):Role!   
 }    
 
 type User{
     id: ID!
     name:String!
     email:String!
+    roles:[Role]!
 }
 type Role{
     id:ID!
     name: String!
     active: Boolean 
 }   
+input Create_Role_Imput{
+    name: String!
+    active: Boolean 
+}
 
 type Mutation{
-    createUser(name:String!, email:String!):User!
+    createUser(name:String!, email:String!, roles:[Create_Role_Imput]):User!
     updateUser(id:ID!,name:String!, email:String!):Boolean!
     deleteUser(id:ID!): Boolean
+
+    createRole(input:Create_Role_Imput):Role!
+    updateRole(id:ID!,name:String!, active:Boolean!):Boolean!
+    deleteRole(id:ID!): Boolean
 }   
